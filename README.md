@@ -21,7 +21,8 @@ Setup
 
 First off add the composer dependency:
 
-TODO
+    "require": {
+        "stechstudio/laravel-raw-sessions" : "0.1.*"
 
 Then add the service provider to the array in `config/app.php`:
 
