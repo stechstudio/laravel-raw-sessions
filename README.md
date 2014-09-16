@@ -24,13 +24,17 @@ First off add the composer dependency:
     "require": {
         "stechstudio/laravel-raw-sessions" : "0.1.*"
 
-Then add the service provider to the array in `config/app.php`:
+Then of course update composer:
+
+    composer update
+
+Now add the service provider to the array in `config/app.php`:
 
     'providers' => array(
         ...
         'STS\Session\LaravelRawSessionServiceProvider',
 
-Now in `config/session.php` set the `driver` to `raw`:
+Finally in `config/session.php` set the `driver` to `raw`:
 
     'driver' => 'raw',
 
