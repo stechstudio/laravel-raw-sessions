@@ -1,0 +1,23 @@
+{
+    "name": "stechstudio/laravel-raw-sessions",
+    "description": "",
+    "authors": [
+        {
+            "name": "Joseph Szobody",
+            "email": "joseph@stechstudio.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "STS\\Session\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
