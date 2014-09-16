@@ -1,6 +1,7 @@
 {
     "name": "stechstudio/laravel-raw-sessions",
-    "description": "",
+    "description": "A raw PHP session handler for Laravel",
+    "license": "MIT",
     "authors": [
         {
             "name": "Joseph Szobody",
