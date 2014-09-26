@@ -15,6 +15,7 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	 */
 	public function __construct($namespace = null) 
 	{
+        ini_restore('unserialize_callback_func');
 		if (session_status() == PHP_SESSION_NONE) {
 			session_start();
 		}
@@ -80,7 +81,6 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	 */
 	public function destroy($sessionId) 
 	{
-		session_destroy();
 		return true;
 	}
 
