@@ -1,7 +1,8 @@
 <?php
 namespace STS\Session;
 
-class RawSessionHandler implements \SessionHandlerInterface {
+class RawSessionHandler implements \SessionHandlerInterface
+{
 	/**
 	 * Reference to our session data
 	 * @var array
@@ -37,8 +38,8 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	 */
 	private function setupNamespace($namespace)
 	{
-		if(!is_null($namespace)) {
-			if(!isset($_SESSION[$namespace]) || !is_array($_SESSION[$namespace])) {
+		if (!is_null($namespace)) {
+			if (!isset($_SESSION[$namespace]) || !is_array($_SESSION[$namespace])) {
 				$_SESSION[$namespace] = array();
 			}
 			$this->data = &$_SESSION[$namespace];
@@ -95,5 +96,4 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	{
 		return true;
 	}
-
 }
