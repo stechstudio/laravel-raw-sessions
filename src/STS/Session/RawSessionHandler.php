@@ -10,10 +10,10 @@ class RawSessionHandler implements \SessionHandlerInterface {
 
 	/**
 	 * Create a new raw PHP session handler instance.
-	 * 
+	 *
 	 * @param string $namespace Keep session data in a $_SESSION sub-array
 	 */
-	public function __construct($namespace = null) 
+	public function __construct($namespace = null)
 	{
         // Laravel 5 registers a callback function to handle unserializing session objects, which means you get
         // a fatal error if the object can't be unserialized (which I get since I'm sharing session with another app).
@@ -28,14 +28,14 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	}
 
 	/**
-	 * If provided, we'll use a sub-array of $_SESSION instead of the 
+	 * If provided, we'll use a sub-array of $_SESSION instead of the
 	 * root array. This keeps us from polluting the root $_SESSION,
 	 * which could be important if we're sharing session with other apps.
-	 * 
+	 *
 	 * @param  string $namespace
 	 * @return void
 	 */
-	private function setupNamespace($namespace) 
+	private function setupNamespace($namespace)
 	{
 		if(!is_null($namespace)) {
 			if(!isset($_SESSION[$namespace]) || !is_array($_SESSION[$namespace])) {
@@ -50,7 +50,7 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function open($savePath, $sessionName) 
+	public function open($savePath, $sessionName)
 	{
 		return true;
 	}
@@ -58,7 +58,7 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function close() 
+	public function close()
 	{
 		session_write_close();
 		return true;
@@ -67,7 +67,7 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function read($sessionId) 
+	public function read($sessionId)
 	{
 		return serialize($this->data);
 	}
@@ -75,7 +75,7 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function write($sessionId, $data) 
+	public function write($sessionId, $data)
 	{
 		$this->data = unserialize($data);
 	}
@@ -83,15 +83,15 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function destroy($sessionId) 
+	public function destroy($sessionId)
 	{
-		return true;
+		return session_destroy();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function gc($lifetime) 
+	public function gc($lifetime)
 	{
 		return true;
 	}
