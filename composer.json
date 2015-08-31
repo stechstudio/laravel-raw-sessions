@@ -14,8 +14,8 @@
     "autoload": {
         "classmap": [
         ],
-        "psr-0": {
-            "STS\\Session\\": "src/"
+        "psr-4": {
+            "STS\\Session\\": "src"
         }
     },
     "minimum-stability": "stable"
