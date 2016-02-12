@@ -34,9 +34,13 @@ Now add the service provider to the array in `config/app.php`:
         ...
         'STS\Session\LaravelRawSessionServiceProvider',
 
-Finally in `config/session.php` set the `driver` to `raw`:
+In `config/session.php` set the `driver` to `raw`:
 
     'driver' => 'raw',
+    
+And finally, make sure in that same file you turn off encryption. The only way we can have PHP manage the session is to tell Laravel not to encrypt it.
+
+    'encrypt' => false,
 
 That's it! All your Laravel `Session` calls will be reading and writing to the raw `$_SESSION` array.
 
