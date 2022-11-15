@@ -85,7 +85,7 @@ class RawSessionHandler implements \SessionHandlerInterface {
 	 */
 	public function destroy($sessionId) 
 	{
-		return true;
+		session_regenerate_id();
 	}
 
 	/**
